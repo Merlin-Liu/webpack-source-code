@@ -28,7 +28,7 @@ module.exports = {
 	plugins: [
 		{
 			apply: () => {
-				console.error('I am a plugin')
+				console.log('I am a custcom plugin~')
 			}
 		}
 	],
