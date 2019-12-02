@@ -3,7 +3,6 @@ const path = require('path')
 module.exports = {
     context: __dirname,
     mode: 'development',
-    // devtool: 'source-map',
     entry: {
 		sb: './src/index.js'
 	},
@@ -33,5 +32,6 @@ module.exports = {
 		}
 	],
 
+	// devtool: 'source-map',
 	devtool: false
 }
