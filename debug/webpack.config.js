@@ -4,7 +4,7 @@ module.exports = {
     context: __dirname,
     mode: 'development',
     entry: {
-		sb: './src/index.js'
+		customOutputFile: './src/index.js'
 	},
     output: {
         path: path.join(__dirname, './dist'),
@@ -16,7 +16,7 @@ module.exports = {
                 use: [
 					'babel-loader',
 					{
-						loader: path.resolve('./src/loader.js')
+						loader: path.resolve(__dirname,'./src/loader.js')
 					}
 				],
                 exclude: /node_modules/,
@@ -27,7 +27,7 @@ module.exports = {
 	plugins: [
 		{
 			apply: () => {
-				console.log('I am a custcom plugin~')
+				console.log('I am a custcom plugin ~')
 			}
 		}
 	],
