@@ -1,6 +1,6 @@
+const consola = require('consola')
+
 module.exports = function (s) {
-	console.log('custom loader~~')
-	console.log(s)
-	console.log('custom loader~~')
+	consola.info('自定义loader～')
 	return s
 }
