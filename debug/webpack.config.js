@@ -15,6 +15,7 @@ module.exports = {
 	// 对watch的配置，参考文档
 	// watchOptions: {}
 
+	// 起点或是应用程序的起点入口。从这个起点开始，应用程序启动执行。如果传递一个数组，那么数组的每一项都会执行。
     entry: {
 		customOutputFile: './src/index.js'
 	},
