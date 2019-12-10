@@ -29,7 +29,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: [
-					'babel-loader',
+					// 'babel-loader',
 					{
 						loader: path.resolve(__dirname,'./loader.js')
 					}
@@ -44,7 +44,7 @@ module.exports = {
 		{
 			apply: (compiler) => {
 				compiler.hooks.run.tap('runCallback', () => {
-					consola.info(' 我勾住了run方法')
+					consola.info(' 自定义插件A：我勾住了run方法')
 				})
 				consola.info(' 这里是个自定义插件A～')
 			}
