@@ -39,6 +39,10 @@ module.exports = {
         ]
 	},
 
+	optimization: {
+		// minimize: true
+	},
+
 	plugins: [
 		// plugin的第一种写法，直接是个函数，接收的参数是compiler实例
 		{
