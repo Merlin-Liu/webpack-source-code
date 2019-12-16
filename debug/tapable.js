@@ -15,16 +15,16 @@ const { SyncHook, AsyncSeriesBailHook, AsyncSeriesHook } = require("tapable");
 // B:Tapable
 // A:Tapable
 
-const asyncTapable = new AsyncSeriesBailHook(['lgf'])
-asyncTapable.tapAsync('lgf', (r, c) => {
-	console.log(r)
-	c()
-})
-asyncTapable.callAsync({a: 1}, () => {
-	console.log(1111)
-})
+// const asyncTapable = new AsyncSeriesBailHook(['lgf'])
+// asyncTapable.tapAsync('lgf', (r, c) => {
+// 	console.log(r)
+// 	c()
+// })
+// asyncTapable.callAsync({a: 1}, () => {
+// 	console.log(1111)
+// })
 
-// let queue2 = new AsyncSeriesHook(['name']);
+let queue2 = new AsyncSeriesHook(['name']);
 // console.time('cost2');
 // queue2.tapAsync('1', function (name, cb) {
 //     setTimeout(() => {
@@ -45,11 +45,11 @@ asyncTapable.callAsync({a: 1}, () => {
 //     }, 3000);
 // });
 
-// queue2.callAsync('webpack', (err) => {
-//     console.log(err);
-//     console.log('over');
-//     console.timeEnd('cost2');
-// });
+queue2.callAsync('webpack', (err) => {
+    console.log(err);
+	console.log('over');
+    // console.timeEnd('cost2');
+});
 // 执行结果
 /*
 webpack 1
