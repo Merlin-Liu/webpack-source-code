@@ -14,11 +14,10 @@ webpack(config, finifshCallback) // 如果传入回调函数会自动执行compi
 // const compiler = webpack(config)
 // compiler.run((err, stats) => {
 // 	if (err) {
-// 		console.error(err)
+// 		return consola.fatal(err)
 // 	}
-// 	else {
-// 		console.error('success')
-// 	}
+//
+//  consola.success('webpack任务执行完成～')
 // })
 
 // webpack中存在非常重要的两个核心对象compiler、compilation
