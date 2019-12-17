@@ -6,5 +6,5 @@ import is from 'object.is'
 // 	console.error('11212212')
 // }, 3000)
 
-consola.success('webpack执行过程~~~~~~')
+consola.success('webpack执行过程~')
 consola.info(is(1,1))
