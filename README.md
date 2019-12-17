@@ -1,3 +1,9 @@
 # webpack-source-code
 
-学习webpack最新版本的功能、使用，深入了解期内部原理、思想，项目持续更新中...
+webpack源码解析，版本为`5.0.0-beta.7`
+
+通过控制台log，分许整体流程，如下
+
+![](./static/log1.png)
+
+![](./static/log2.png)
