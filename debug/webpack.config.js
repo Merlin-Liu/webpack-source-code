@@ -44,22 +44,22 @@ module.exports = {
 	},
 
 	plugins: [
-		// plugin的第一种写法，直接是个函数，接收的参数是compiler实例
+		// plugin的第一种写法，是个对象，对象拥有apply方法，接收的参数是compiler实例
+		(compiler) => {
+			compiler.hooks.afterEmit.tap('runCallback', () => {
+				console.log(' 自定义插件B：我勾住了afterEmit钩子')
+			})
+			console.log(' 这里是个自定义插件B～')
+		},
+
+		// plugin的第二种写法，直接是个函数，接收的参数是compiler实例
 		{
 			apply: (compiler) => {
 				compiler.hooks.run.tap('runCallback', () => {
-					consola.info(' 自定义插件A：我勾住了run方法')
+					console.log(' 自定义插件A：我勾住了run钩子')
 				})
-				consola.info(' 这里是个自定义插件A～')
+				console.log(' 这里是个自定义插件A～')
 			}
-		},
-
-		// plugin的第二种写法，是个对象，对象拥有apply方法，接收的参数是compiler实例
-		(compiler) => {
-			compiler.hooks.afterEmit.tap('runCallback', () => {
-				consola.info(' 我勾住了afterEmit方法')
-			})
-			consola.info(' 这里是个自定义插件B～')
 		}
 	],
 
