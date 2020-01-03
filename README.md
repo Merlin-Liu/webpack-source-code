@@ -116,3 +116,52 @@ const webpack = (options, callback) => {
 最后webpack方法将编译器`compiler`返回，以便与开发者使用`compiler`进行其他操作。
 
 ### createCompiler
+
+`createCompiler`源码如下
+
+```
+const createCompiler = options => {
+	consola.info('2⃣️  `createCompiler`创建编译器')
+
+	// 根据默认配置和传入的配置生成最终的配置
+	options = new WebpackOptionsDefaulter().process(options);
+
+	const compiler = new Compiler(options.context);
+	compiler.options = options;
+
+	new NodeEnvironmentPlugin({
+		infrastructureLogging: options.infrastructureLogging
+	}).apply(compiler);
+
+	// 遍历plugin数组，应用插件
+	if (Array.isArray(options.plugins)) {
+		consola.info('3⃣️  应用自定义插件，即`option`中配置的`plugin`')
+
+		for (const plugin of options.plugins) {
+			// plugin的第一种写法，直接是个函数，接收的参数是compiler实例
+			if (typeof plugin === "function") {
+				plugin.call(compiler, compiler);
+			}
+			// plugin的第二种写法，是个对象，对象拥有apply方法，接收的参数是compiler实例
+			else {
+				plugin.apply(compiler);
+			}
+		}
+	}
+
+	// 引入Tapable概念
+	compiler.hooks.environment.call();
+	compiler.hooks.afterEnvironment.call();
+
+	// 处理传入的options
+	// 根据options应用超级多内置插件，插件是webpack功能强大之处
+	// webpack插件其实就是一个提供apply方法的类，它在合适的时候会被webpack实例化并执行apply方法
+	// 而apply方法接收了 compiler 对象，方便在hooks上监听消息
+	consola.info(`应用内置插件`)
+	compiler.options = new WebpackOptionsApply().process(options, compiler);
+	// process函数执行完，webpack将所有它关心的hook消息都注册完成，等待后续编译过程中挨个触发
+
+	consola.info('4⃣️  `createCompiler`编译器创建完成')
+	return compiler;
+};
+```
